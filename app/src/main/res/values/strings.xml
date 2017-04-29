@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Juwan.</string>
+    <string name="juwan_description">Developer by day, dreamer by night.</string>
+    <string name="profile_picture_content_description">Profile Picture</string>
+    <string name="go_button_text">GO</string>
+    <string name="card_image_content_description">Card Image</string>
+</resources>
