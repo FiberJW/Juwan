@@ -8,14 +8,14 @@ import android.support.v7.widget.Toolbar;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class AboutActivity extends AppCompatActivity {
+public class WorkActivity extends AppCompatActivity {
     @BindView(R.id.toolbar)
     Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_about);
+        setContentView(R.layout.activity_work);
         ButterKnife.bind(this);
 
         setSupportActionBar(toolbar);
@@ -23,7 +23,7 @@ public class AboutActivity extends AppCompatActivity {
         ActionBar ab = getSupportActionBar();
         assert ab != null;
 
-        ab.setTitle("");
+        ab.setTitle(R.string.work_activity_toolbar_title);
         ab.setDisplayHomeAsUpEnabled(true);
     }
 }

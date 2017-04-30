@@ -15,6 +15,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 import static io.github.datwheat.juwan.CardUtils.ARG_DESCRIPTION;
+import static io.github.datwheat.juwan.CardUtils.ARG_DESTINATION;
 import static io.github.datwheat.juwan.CardUtils.ARG_IMAGE;
 import static io.github.datwheat.juwan.CardUtils.ARG_TITLE;
 
@@ -49,11 +50,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         if (pager.getCurrentItem() == 0) {
-            // If the user is currently looking at the first step, allow the system to handle the
-            // Back button. This calls finish() on this activity and pops the back stack.
             super.onBackPressed();
         } else {
-            // Otherwise, select the previous step.
             pager.setCurrentItem(pager.getCurrentItem() - 1);
         }
     }
@@ -74,35 +72,40 @@ public class MainActivity extends AppCompatActivity {
                     cardFragmentArguments = generateCardFragmentArguments(
                             "Work",
                             "Projects I’m proud of, featuring a lot of open-source work.",
-                            R.drawable.ic_code_white_48dp
+                            R.drawable.ic_code_white_48dp,
+                            WorkActivity.class.getName()
                     );
                     break;
                 case 1:
                     cardFragmentArguments = generateCardFragmentArguments(
                             "Skills",
                             "Learn about what I can do for you!",
-                            R.drawable.ic_assessment_white_48dp
+                            R.drawable.ic_assessment_white_48dp,
+                            SkillsActivity.class.getName()
                     );
                     break;
                 case 2:
                     cardFragmentArguments = generateCardFragmentArguments(
                             "Social",
                             "Find me on all of my social media platforms.",
-                            R.drawable.ic_whatshot_white_48dp
+                            R.drawable.ic_whatshot_white_48dp,
+                            SocialActivity.class.getName()
                     );
                     break;
                 case 3:
                     cardFragmentArguments = generateCardFragmentArguments(
                             "Need Help?",
                             "Contact me if you need a helping hand for your programming needs.",
-                            R.drawable.ic_help_outline_white_48dp
+                            R.drawable.ic_help_outline_white_48dp,
+                            NeedHelpActivity.class.getName()
                     );
                     break;
                 case 4:
                     cardFragmentArguments = generateCardFragmentArguments(
                             "Donate",
                             "Help support my contributions to the open-source ecosystem.",
-                            R.drawable.ic_attach_money_white_48dp
+                            R.drawable.ic_attach_money_white_48dp,
+                            DonateActivity.class.getName()
                     );
                     break;
                 default:
@@ -114,12 +117,13 @@ public class MainActivity extends AppCompatActivity {
             return cardFragment;
         }
 
-        private Bundle generateCardFragmentArguments(String title, String description, int imageResourceId) {
+        private Bundle generateCardFragmentArguments(String title, String description, int imageResourceId, String destination) {
             Bundle cardFragmentArguments = new Bundle();
 
             cardFragmentArguments.putString(ARG_TITLE, title);
             cardFragmentArguments.putString(ARG_DESCRIPTION, description);
             cardFragmentArguments.putInt(ARG_IMAGE, imageResourceId);
+            cardFragmentArguments.putString(ARG_DESTINATION, destination);
 
             return cardFragmentArguments;
         }

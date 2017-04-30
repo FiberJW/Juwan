@@ -1,5 +1,6 @@
 package io.github.datwheat.juwan;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -44,9 +45,21 @@ public class CardFragment extends Fragment {
         cardDescription.setText(description);
         icon.setImageResource(imageResource);
 
+        String destination = arguments.getString(CardUtils.ARG_DESTINATION);
+
+        Class DestinationActivity = null;
+        try {
+            DestinationActivity = Class.forName(destination);
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        final Class finalDestinationActivity = DestinationActivity;
         goButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent = new Intent(getContext(), finalDestinationActivity);
+                startActivity(intent);
             }
         });
 
