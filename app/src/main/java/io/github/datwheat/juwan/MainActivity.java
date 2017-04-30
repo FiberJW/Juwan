@@ -19,7 +19,7 @@ import static io.github.datwheat.juwan.CardUtils.ARG_IMAGE;
 import static io.github.datwheat.juwan.CardUtils.ARG_TITLE;
 
 public class MainActivity extends AppCompatActivity {
-    private static final int NUM_PAGES = 4;
+    private static final int NUM_PAGES = 5;
 
     @BindView(R.id.pager)
     ViewPager pager;
@@ -79,19 +79,26 @@ public class MainActivity extends AppCompatActivity {
                     break;
                 case 1:
                     cardFragmentArguments = generateCardFragmentArguments(
+                            "Skills",
+                            "Learn about what I can do for you!",
+                            R.drawable.ic_assessment_white_48dp
+                    );
+                    break;
+                case 2:
+                    cardFragmentArguments = generateCardFragmentArguments(
                             "Social",
                             "Find me on all of my social media platforms.",
                             R.drawable.ic_whatshot_white_48dp
                     );
                     break;
-                case 2:
+                case 3:
                     cardFragmentArguments = generateCardFragmentArguments(
                             "Need Help?",
                             "Contact me if you need a helping hand for your programming needs.",
                             R.drawable.ic_help_outline_white_48dp
                     );
                     break;
-                case 3:
+                case 5:
                     cardFragmentArguments = generateCardFragmentArguments(
                             "Donate",
                             "Help support my contributions to the open-source ecosystem.",
