@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -23,6 +24,9 @@ public class CardFragment extends Fragment {
     @BindView(R.id.icon)
     ImageView icon;
 
+    @BindView(R.id.go_button)
+    Button goButton;
+
 
     @Nullable
     @Override
@@ -39,6 +43,12 @@ public class CardFragment extends Fragment {
         cardTitle.setText(title);
         cardDescription.setText(description);
         icon.setImageResource(imageResource);
+
+        goButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            }
+        });
 
         return rootView;
     }

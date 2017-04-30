@@ -6,6 +6,7 @@
         <item name="android:windowBackground">@drawable/main_gradient_background_selector</item>
         <item name="colorPrimary">@color/indigo</item>
         <item name="colorPrimaryDark">@color/purpleHeart</item>
+        <item name="colorControlNormal">@android:color/white</item>
         <item name="colorAccent">@color/manila</item>
         <item name="android:textColorPrimary">@android:color/primary_text_dark</item>
         <item name="android:colorBackground">@android:color/background_dark</item>
