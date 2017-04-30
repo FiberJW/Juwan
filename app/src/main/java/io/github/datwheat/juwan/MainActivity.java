@@ -98,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
                             R.drawable.ic_help_outline_white_48dp
                     );
                     break;
-                case 5:
+                case 4:
                     cardFragmentArguments = generateCardFragmentArguments(
                             "Donate",
                             "Help support my contributions to the open-source ecosystem.",
