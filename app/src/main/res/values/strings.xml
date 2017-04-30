@@ -4,4 +4,12 @@
     <string name="profile_picture_content_description">Profile Picture</string>
     <string name="go_button_text">GO</string>
     <string name="card_image_content_description">Card Image</string>
+    <string name="about_me_content">
+        As a lifelong learner, I love to experiment with new tech and build cool things.
+        \n\nYou can find me tinkering with React Native and Android in my free time.
+        \n\nI’m currently a student at Towson Universty pursuing a B.S. in Computer Science.
+        \n\nI love great tea, dank memes, and protein.
+        \n\nI really appreciate you taking the time to learn about me — thanks!
+    </string>
+    <string name="about_me_intro">Hi, I\'m Juwan</string>
 </resources>
