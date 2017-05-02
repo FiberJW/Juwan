@@ -6,4 +6,6 @@
     <color name="purpleHeart">#5D26C2</color>
     <color name="indigo">#FF651fff</color>
     <color name="manila">#FFFFCC80</color>
+    <color name="amber">#FFC107</color>
+    <color name="background_light">#F0F0F0</color>
 </resources>
