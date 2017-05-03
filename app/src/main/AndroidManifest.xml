@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.activities.MainActivity"
             android:screenOrientation="sensorPortrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -21,46 +21,46 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".AboutActivity"
-            android:parentActivityName=".MainActivity">
+            android:name=".ui.activities.AboutActivity"
+            android:parentActivityName=".ui.activities.MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity"/>
+                android:value=".ui.activities.MainActivity"/>
         </activity>
         <activity
-            android:name=".WorkActivity"
-            android:parentActivityName=".MainActivity">
+            android:name=".ui.activities.WorkActivity"
+            android:parentActivityName=".ui.activities.MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity"/>
+                android:value=".ui.activities.MainActivity"/>
         </activity>
         <activity
-            android:name=".SkillsActivity"
-            android:parentActivityName=".MainActivity">
+            android:name=".ui.activities.SkillsActivity"
+            android:parentActivityName=".ui.activities.MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity"/>
+                android:value=".ui.activities.MainActivity"/>
         </activity>
         <activity
-            android:name=".SocialActivity"
-            android:parentActivityName=".MainActivity">
+            android:name=".ui.activities.SocialActivity"
+            android:parentActivityName=".ui.activities.MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity"/>
+                android:value=".ui.activities.MainActivity"/>
         </activity>
         <activity
-            android:name=".NeedHelpActivity"
-            android:parentActivityName=".MainActivity">
+            android:name=".ui.activities.NeedHelpActivity"
+            android:parentActivityName=".ui.activities.MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity"/>
+                android:value=".ui.activities.MainActivity"/>
         </activity>
         <activity
-            android:name=".DonateActivity"
-            android:parentActivityName=".MainActivity">
+            android:name=".ui.activities.DonateActivity"
+            android:parentActivityName=".ui.activities.MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity"/>
+                android:value=".ui.activities.MainActivity"/>
         </activity>
     </application>
 

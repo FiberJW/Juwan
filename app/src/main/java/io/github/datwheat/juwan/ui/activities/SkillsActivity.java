@@ -1,7 +1,9 @@
-package io.github.datwheat.juwan;
+package io.github.datwheat.juwan.ui.activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import io.github.datwheat.juwan.R;
 
 public class SkillsActivity extends AppCompatActivity {
 

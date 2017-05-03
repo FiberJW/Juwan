@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="io.github.datwheat.juwan.MainActivity">
+    tools:context="io.github.datwheat.juwan.ui.activities.MainActivity">
 
     <TextView
         android:id="@+id/textView"
@@ -49,7 +49,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/profile_picture"/>
 
-    <io.github.datwheat.juwan.CardViewPager
+    <io.github.datwheat.juwan.ui.views.CardViewPager
         android:id="@+id/pager"
         android:overScrollMode="never"
         android:layout_width="match_parent"

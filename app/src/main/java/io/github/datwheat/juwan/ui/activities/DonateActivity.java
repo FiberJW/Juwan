@@ -1,13 +1,15 @@
-package io.github.datwheat.juwan;
+package io.github.datwheat.juwan.ui.activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class SocialActivity extends AppCompatActivity {
+import io.github.datwheat.juwan.R;
+
+public class DonateActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_social);
+        setContentView(R.layout.activity_donate);
     }
 }

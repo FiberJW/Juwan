@@ -1,4 +1,4 @@
-package io.github.datwheat.juwan;
+package io.github.datwheat.juwan.ui.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,11 +13,9 @@ import android.widget.ImageView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import io.github.datwheat.juwan.R;
+import io.github.datwheat.juwan.ui.fragments.CardFragment;
 
-import static io.github.datwheat.juwan.CardUtils.ARG_DESCRIPTION;
-import static io.github.datwheat.juwan.CardUtils.ARG_DESTINATION;
-import static io.github.datwheat.juwan.CardUtils.ARG_IMAGE;
-import static io.github.datwheat.juwan.CardUtils.ARG_TITLE;
 
 public class MainActivity extends AppCompatActivity {
     private static final int NUM_PAGES = 5;
@@ -120,10 +118,10 @@ public class MainActivity extends AppCompatActivity {
         private Bundle generateCardFragmentArguments(String title, String description, int imageResourceId, String destination) {
             Bundle cardFragmentArguments = new Bundle();
 
-            cardFragmentArguments.putString(ARG_TITLE, title);
-            cardFragmentArguments.putString(ARG_DESCRIPTION, description);
-            cardFragmentArguments.putInt(ARG_IMAGE, imageResourceId);
-            cardFragmentArguments.putString(ARG_DESTINATION, destination);
+            cardFragmentArguments.putString(CardFragment.ARG_TITLE, title);
+            cardFragmentArguments.putString(CardFragment.ARG_DESCRIPTION, description);
+            cardFragmentArguments.putInt(CardFragment.ARG_IMAGE, imageResourceId);
+            cardFragmentArguments.putString(CardFragment.ARG_DESTINATION, destination);
 
             return cardFragmentArguments;
         }

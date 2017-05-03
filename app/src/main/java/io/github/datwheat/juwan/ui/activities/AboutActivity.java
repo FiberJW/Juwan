@@ -1,4 +1,4 @@
-package io.github.datwheat.juwan;
+package io.github.datwheat.juwan.ui.activities;
 
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
@@ -7,6 +7,7 @@ import android.support.v7.widget.Toolbar;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import io.github.datwheat.juwan.R;
 
 public class AboutActivity extends AppCompatActivity {
     @BindView(R.id.toolbar)

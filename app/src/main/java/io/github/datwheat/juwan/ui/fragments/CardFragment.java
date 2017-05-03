@@ -1,4 +1,4 @@
-package io.github.datwheat.juwan;
+package io.github.datwheat.juwan.ui.fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,9 +13,15 @@ import android.widget.TextView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import io.github.datwheat.juwan.R;
 
 
 public class CardFragment extends Fragment {
+    public static final String ARG_TITLE = "title";
+    public static final String ARG_DESCRIPTION = "description";
+    public static final String ARG_IMAGE = "image";
+    public static final String ARG_DESTINATION = "destination";
+
     @BindView(R.id.card_title)
     TextView cardTitle;
 
@@ -37,15 +43,15 @@ public class CardFragment extends Fragment {
 
         Bundle arguments = getArguments();
 
-        String title = arguments.getString(CardUtils.ARG_TITLE);
-        String description = arguments.getString(CardUtils.ARG_DESCRIPTION);
-        int imageResource = arguments.getInt(CardUtils.ARG_IMAGE);
+        String title = arguments.getString(ARG_TITLE);
+        String description = arguments.getString(ARG_DESCRIPTION);
+        int imageResource = arguments.getInt(ARG_IMAGE);
 
         cardTitle.setText(title);
         cardDescription.setText(description);
         icon.setImageResource(imageResource);
 
-        String destination = arguments.getString(CardUtils.ARG_DESTINATION);
+        String destination = arguments.getString(ARG_DESTINATION);
 
         Class DestinationActivity = null;
         try {
