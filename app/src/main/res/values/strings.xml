@@ -13,6 +13,7 @@
     </string>
     <string name="about_me_intro">Hi, I\'m Juwan</string>
     <string name="work_activity_toolbar_title">Work</string>
+    <string name="skills_activity_toolbar_title">Skills</string>
     <string name="project_name">PÜL</string>
     <string name="project_description">A carpooling app designed for students to help each other get more involved in their community.</string>
     <string name="project_image_content_description">Project Image</string>

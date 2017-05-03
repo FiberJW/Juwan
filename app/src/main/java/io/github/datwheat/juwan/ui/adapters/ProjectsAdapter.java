@@ -20,18 +20,17 @@ import io.github.datwheat.juwan.R;
 
 public class ProjectsAdapter extends RecyclerView.Adapter<ProjectsAdapter.ViewHolder> {
     private List projects;
-    private Context parentContext;
+    private Context context;
 
-    public ProjectsAdapter(Context context, List dataset) {
+    public ProjectsAdapter(List dataset) {
         super();
 
         projects = dataset;
-        parentContext = context;
     }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        Context context = parent.getContext();
+        context = parent.getContext();
         LayoutInflater inflater = LayoutInflater.from(context);
 
         View projectView = inflater.inflate(R.layout.item_project, parent, false);
@@ -44,9 +43,9 @@ public class ProjectsAdapter extends RecyclerView.Adapter<ProjectsAdapter.ViewHo
         // populate viewholder fields
         // Object project = projects.get(position);
 
-        Picasso.with(parentContext)
+        Picasso.with(context)
                 .load("https://i.imgur.com/FB7xWqw.png")
-                .resize(128, 128)
+                .resize(256, 256)
                 .centerCrop()
                 .into(holder.projectImageView);
 

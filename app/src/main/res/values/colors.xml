@@ -8,4 +8,5 @@
     <color name="manila">#FFFFCC80</color>
     <color name="amber">#FFC107</color>
     <color name="background_light">#F0F0F0</color>
+    <color name="grey_text">#B1B1B1</color>
 </resources>
