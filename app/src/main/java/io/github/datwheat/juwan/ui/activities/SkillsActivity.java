@@ -1,6 +1,7 @@
 package io.github.datwheat.juwan.ui.activities;
 
 import android.os.Bundle;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -22,8 +23,8 @@ public class SkillsActivity extends AppCompatActivity {
     @BindView(R.id.skillsRecyclerView)
     RecyclerView skillsRecyclerView;
 
-    private RecyclerView.LayoutManager recyclerViewLayoutManager;
-    private RecyclerView.Adapter skillsRecyclerViewAdapter;
+    @BindView(R.id.rootConstraintLayout)
+    ConstraintLayout rootConstraintLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,15 +40,24 @@ public class SkillsActivity extends AppCompatActivity {
         ab.setTitle(R.string.skills_activity_toolbar_title);
         ab.setDisplayHomeAsUpEnabled(true);
 
-        recyclerViewLayoutManager = new LinearLayoutManager(this);
+        RecyclerView.LayoutManager recyclerViewLayoutManager = new LinearLayoutManager(this);
         skillsRecyclerView.setLayoutManager(recyclerViewLayoutManager);
 
         List<Object> skills = new ArrayList<>();
         skills.add(new Object());
         skills.add(new Object());
         skills.add(new Object());
+        skills.add(new Object());
+        skills.add(new Object());
+        skills.add(new Object());
+        skills.add(new Object());
+        skills.add(new Object());
+        skills.add(new Object());
+        skills.add(new Object());
+        skills.add(new Object());
+        skills.add(new Object());
 
-        skillsRecyclerViewAdapter = new SkillsAdapter(skills);
+        RecyclerView.Adapter skillsRecyclerViewAdapter = new SkillsAdapter(skills);
         skillsRecyclerView.setAdapter(skillsRecyclerViewAdapter);
         skillsRecyclerView.setMinimumWidth(300);
     }

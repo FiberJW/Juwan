@@ -45,6 +45,15 @@ public class WorkActivity extends AppCompatActivity {
         projectData.add(new Object());
         projectData.add(new Object());
         projectData.add(new Object());
+        projectData.add(new Object());
+        projectData.add(new Object());
+        projectData.add(new Object());
+        projectData.add(new Object());
+        projectData.add(new Object());
+        projectData.add(new Object());
+        projectData.add(new Object());
+        projectData.add(new Object());
+        projectData.add(new Object());
 
         projectRecyclerViewAdapter = new ProjectsAdapter(projectData);
         projectRecyclerView.setAdapter(projectRecyclerViewAdapter);
