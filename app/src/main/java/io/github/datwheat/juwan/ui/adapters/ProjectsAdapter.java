@@ -16,6 +16,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.github.datwheat.juwan.R;
+import io.github.datwheat.juwan.ui.utils.DimensionUtils;
 
 
 public class ProjectsAdapter extends RecyclerView.Adapter<ProjectsAdapter.ViewHolder> {
@@ -51,7 +52,12 @@ public class ProjectsAdapter extends RecyclerView.Adapter<ProjectsAdapter.ViewHo
 
         if (position == getItemCount() - 1) {
             RecyclerView.LayoutParams params = (RecyclerView.LayoutParams) holder.rootCardView.getLayoutParams();
-            params.setMargins(params.leftMargin, params.topMargin, params.rightMargin, 8);
+            params.setMargins(
+                    params.leftMargin,
+                    params.topMargin,
+                    params.rightMargin,
+                    DimensionUtils.pxToDp(context, 8)
+            );
             holder.rootCardView.setLayoutParams(params);
         }
 

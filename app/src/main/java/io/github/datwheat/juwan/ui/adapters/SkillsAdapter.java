@@ -2,6 +2,7 @@ package io.github.datwheat.juwan.ui.adapters;
 
 import android.content.Context;
 import android.support.constraint.ConstraintLayout;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +13,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.github.datwheat.juwan.R;
+import io.github.datwheat.juwan.ui.utils.DimensionUtils;
 
 
 public class SkillsAdapter extends RecyclerView.Adapter<SkillsAdapter.ViewHolder> {
@@ -37,11 +39,14 @@ public class SkillsAdapter extends RecyclerView.Adapter<SkillsAdapter.ViewHolder
         // populate fields
 
         if (position == getItemCount() - 1) {
-            int paddingPixel = 16;
-            float density = context.getResources().getDisplayMetrics().density;
-            int paddingDp = (int)(paddingPixel * density);
-
-            holder.rootConstraintLayout.setPadding(paddingDp, paddingDp, paddingDp, paddingDp);
+            RecyclerView.LayoutParams params = (RecyclerView.LayoutParams) holder.rootCardView.getLayoutParams();
+            params.setMargins(
+                    params.leftMargin,
+                    params.topMargin,
+                    params.rightMargin,
+                    DimensionUtils.pxToDp(context, 8)
+            );
+            holder.rootCardView.setLayoutParams(params);
         }
     }
 
@@ -55,6 +60,9 @@ public class SkillsAdapter extends RecyclerView.Adapter<SkillsAdapter.ViewHolder
 
         @BindView(R.id.rootConstraintLayout)
         ConstraintLayout rootConstraintLayout;
+
+        @BindView(R.id.rootCardView)
+        CardView rootCardView;
 
         ViewHolder(View view) {
             super(view);
