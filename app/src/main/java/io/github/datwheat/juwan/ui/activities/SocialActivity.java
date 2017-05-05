@@ -17,7 +17,7 @@ import io.github.datwheat.juwan.R;
 import io.github.datwheat.juwan.ui.adapters.SocialAdapter;
 import io.github.datwheat.juwan.ui.decorations.SocialItemDecoration;
 import io.github.datwheat.juwan.ui.models.SocialOutlet;
-import io.github.datwheat.juwan.ui.utils.DimensionUtils;
+import io.github.datwheat.juwan.utils.DimensionUtils;
 
 public class SocialActivity extends AppCompatActivity {
     @BindView(R.id.toolbar)
@@ -25,10 +25,6 @@ public class SocialActivity extends AppCompatActivity {
 
     @BindView(R.id.socialRecyclerView)
     RecyclerView socialRecyclerView;
-
-
-    private RecyclerView.LayoutManager recyclerViewLayoutManager;
-    private RecyclerView.Adapter socialRecyclerViewAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +40,7 @@ public class SocialActivity extends AppCompatActivity {
         ab.setTitle(R.string.social_activity_toolbar_title);
         ab.setDisplayHomeAsUpEnabled(true);
 
-        recyclerViewLayoutManager = new GridLayoutManager(this, 2);
+        RecyclerView.LayoutManager recyclerViewLayoutManager = new GridLayoutManager(this, 2);
         socialRecyclerView.setLayoutManager(recyclerViewLayoutManager);
 
         List<SocialOutlet> socialOutlets = new ArrayList<>();
@@ -54,7 +50,7 @@ public class SocialActivity extends AppCompatActivity {
         socialOutlets.add(new SocialOutlet("Facebook", Uri.parse("https://www.facebook.com/profile.php?id=100014087559824"), R.drawable.facebook_128));
         socialOutlets.add(new SocialOutlet("LinkedIn", Uri.parse("https://www.linkedin.com/in/wheatleyj404"), R.drawable.linkedin_128));
 
-        socialRecyclerViewAdapter = new SocialAdapter(socialOutlets);
+        RecyclerView.Adapter socialRecyclerViewAdapter = new SocialAdapter(socialOutlets);
 
         socialRecyclerView.addItemDecoration(new SocialItemDecoration(DimensionUtils.pxToDp(this, 8)));
         socialRecyclerView.setAdapter(socialRecyclerViewAdapter);

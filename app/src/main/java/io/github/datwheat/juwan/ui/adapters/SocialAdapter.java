@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.support.v4.content.ContextCompat;
-import android.support.v4.graphics.ColorUtils;
 import android.support.v7.graphics.Palette;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -24,6 +23,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.github.datwheat.juwan.R;
 import io.github.datwheat.juwan.ui.models.SocialOutlet;
+import io.github.datwheat.juwan.utils.ArtUtils;
 
 
 public class SocialAdapter extends RecyclerView.Adapter<SocialAdapter.ViewHolder> {
@@ -58,7 +58,7 @@ public class SocialAdapter extends RecyclerView.Adapter<SocialAdapter.ViewHolder
                     public void onSuccess() {
                         Palette colorPalette = Palette.from(((BitmapDrawable) holder.socialIconImageView.getDrawable()).getBitmap()).generate();
                         int backgroundColor = colorPalette.getLightVibrantColor(ContextCompat.getColor(context, android.R.color.white));
-                        int textColor = ColorUtils.calculateLuminance(backgroundColor) < 0.5f ? Color.parseColor("#FFFFFF") : Color.parseColor("#333333");
+                        int textColor = ArtUtils.isDark(backgroundColor) ? Color.parseColor("#FFFFFF") : Color.parseColor("#333333");
 
                         holder.rootCardView.setCardBackgroundColor(backgroundColor);
                         holder.socialOutletNameTextView.setTextColor(textColor);
@@ -83,7 +83,7 @@ public class SocialAdapter extends RecyclerView.Adapter<SocialAdapter.ViewHolder
         return socialOutlets.size();
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
+    static class ViewHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.rootCardView)
         CardView rootCardView;
 
@@ -93,7 +93,7 @@ public class SocialAdapter extends RecyclerView.Adapter<SocialAdapter.ViewHolder
         @BindView(R.id.socialOutletName)
         TextView socialOutletNameTextView;
 
-        public ViewHolder(View itemView) {
+        ViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
         }

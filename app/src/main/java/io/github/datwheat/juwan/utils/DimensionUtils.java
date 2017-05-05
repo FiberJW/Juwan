@@ -1,4 +1,4 @@
-package io.github.datwheat.juwan.ui.utils;
+package io.github.datwheat.juwan.utils;
 
 import android.content.Context;
 

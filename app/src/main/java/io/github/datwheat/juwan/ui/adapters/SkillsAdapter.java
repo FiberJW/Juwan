@@ -13,7 +13,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.github.datwheat.juwan.R;
-import io.github.datwheat.juwan.ui.utils.DimensionUtils;
+import io.github.datwheat.juwan.utils.DimensionUtils;
 
 
 public class SkillsAdapter extends RecyclerView.Adapter<SkillsAdapter.ViewHolder> {

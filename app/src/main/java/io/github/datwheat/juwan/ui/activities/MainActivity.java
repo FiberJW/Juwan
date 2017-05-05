@@ -18,7 +18,7 @@ import io.github.datwheat.juwan.ui.fragments.CardFragment;
 
 
 public class MainActivity extends AppCompatActivity {
-    private static final int NUM_PAGES = 5;
+    private static final int NUM_PAGES = 3;
 
     @BindView(R.id.pager)
     ViewPager pager;
@@ -88,22 +88,6 @@ public class MainActivity extends AppCompatActivity {
                             "Find me on all of my social media platforms.",
                             R.drawable.ic_whatshot_white_48dp,
                             SocialActivity.class.getName()
-                    );
-                    break;
-                case 3:
-                    cardFragmentArguments = generateCardFragmentArguments(
-                            "Need Help?",
-                            "Contact me if you need a helping hand for your programming needs.",
-                            R.drawable.ic_help_outline_white_48dp,
-                            NeedHelpActivity.class.getName()
-                    );
-                    break;
-                case 4:
-                    cardFragmentArguments = generateCardFragmentArguments(
-                            "Donate",
-                            "Help support my contributions to the open-source ecosystem.",
-                            R.drawable.ic_attach_money_white_48dp,
-                            DonateActivity.class.getName()
                     );
                     break;
                 default:
