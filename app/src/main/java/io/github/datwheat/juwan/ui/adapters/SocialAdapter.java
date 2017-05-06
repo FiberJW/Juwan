@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
+import android.net.Uri;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.graphics.Palette;
 import android.support.v7.widget.CardView;
@@ -13,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
@@ -22,15 +24,15 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.github.datwheat.juwan.R;
-import io.github.datwheat.juwan.ui.models.SocialOutlet;
+import io.github.datwheat.juwan.fragment.SocialOutletFragment;
 import io.github.datwheat.juwan.utils.ArtUtils;
 
 
 public class SocialAdapter extends RecyclerView.Adapter<SocialAdapter.ViewHolder> {
     private Context context;
-    private List socialOutlets;
+    private List<SocialOutletFragment> socialOutlets;
 
-    public SocialAdapter(List dataset) {
+    public SocialAdapter(List<SocialOutletFragment> dataset) {
         socialOutlets = dataset;
     }
 
@@ -45,12 +47,12 @@ public class SocialAdapter extends RecyclerView.Adapter<SocialAdapter.ViewHolder
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
-        final SocialOutlet socialOutlet = ((SocialOutlet) socialOutlets.get(position));
+        final SocialOutletFragment socialOutletFragment = socialOutlets.get(position);
 
-        holder.socialOutletNameTextView.setText(socialOutlet.getName());
+        holder.socialOutletNameTextView.setText(socialOutletFragment.name());
 
         Picasso.with(context)
-                .load(socialOutlet.getIconResourceId())
+                .load(socialOutletFragment.imageURL())
                 .resize(128, 128)
                 .centerCrop()
                 .into(holder.socialIconImageView, new Callback() {
@@ -66,13 +68,13 @@ public class SocialAdapter extends RecyclerView.Adapter<SocialAdapter.ViewHolder
 
                     @Override
                     public void onError() {
-
+                        Toast.makeText(context, "Image could not be loaded.", Toast.LENGTH_SHORT).show();
                     }
                 });
         holder.rootCardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent browserIntent = new Intent(Intent.ACTION_VIEW, socialOutlet.getLink());
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(socialOutletFragment.url()));
                 context.startActivity(browserIntent);
             }
         });

@@ -36,7 +36,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="4dp"
                 android:fontFamily="sans-serif-medium"
-                android:text="JS"
+                android:id="@+id/skillNameTextView"
                 android:textColor="@color/grey_text"
                 android:textSize="14sp"
                 />

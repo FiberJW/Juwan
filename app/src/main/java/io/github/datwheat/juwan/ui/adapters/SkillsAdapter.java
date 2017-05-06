@@ -1,26 +1,31 @@
 package io.github.datwheat.juwan.ui.adapters;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+
+import com.daimajia.numberprogressbar.NumberProgressBar;
 
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.github.datwheat.juwan.R;
+import io.github.datwheat.juwan.fragment.SkillFragment;
 import io.github.datwheat.juwan.utils.DimensionUtils;
 
 
 public class SkillsAdapter extends RecyclerView.Adapter<SkillsAdapter.ViewHolder> {
     private Context context;
-    private List skills;
+    private List<SkillFragment> skills;
 
-    public SkillsAdapter(List dataset) {
+    public SkillsAdapter(List<SkillFragment> dataset) {
         super();
         skills = dataset;
     }
@@ -37,6 +42,7 @@ public class SkillsAdapter extends RecyclerView.Adapter<SkillsAdapter.ViewHolder
     @Override
     public void onBindViewHolder(SkillsAdapter.ViewHolder holder, int position) {
         // populate fields
+        SkillFragment skillFragment = skills.get(position);
 
         if (position == getItemCount() - 1) {
             RecyclerView.LayoutParams params = (RecyclerView.LayoutParams) holder.rootCardView.getLayoutParams();
@@ -47,6 +53,11 @@ public class SkillsAdapter extends RecyclerView.Adapter<SkillsAdapter.ViewHolder
                     DimensionUtils.pxToDp(context, 8)
             );
             holder.rootCardView.setLayoutParams(params);
+
+            holder.skillNameTextView.setText(skillFragment.name());
+            holder.progressBar.setProgress(skillFragment.progress());
+            holder.progressBar.setReachedBarColor(Color.parseColor(skillFragment.color()));
+            holder.progressBar.setProgressTextColor(Color.parseColor(skillFragment.color()));
         }
     }
 
@@ -63,6 +74,12 @@ public class SkillsAdapter extends RecyclerView.Adapter<SkillsAdapter.ViewHolder
 
         @BindView(R.id.rootCardView)
         CardView rootCardView;
+
+        @BindView(R.id.skillNameTextView)
+        TextView skillNameTextView;
+
+        @BindView(R.id.number_progress_bar)
+        NumberProgressBar progressBar;
 
         ViewHolder(View view) {
             super(view);
