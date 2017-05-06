@@ -51,6 +51,7 @@
                     android:id="@+id/number_progress_bar"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    app:progress_text_visibility="visible"
                     app:progress_current="70"
                     app:progress_max="100"
                     app:progress_reached_bar_height="16dp"

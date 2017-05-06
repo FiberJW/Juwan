@@ -1,5 +1,5 @@
 query GetAllSkillsQuery{
-  skills: allSkills(orderBy: createdAt_ASC) {
+  skills: allSkills(orderBy: progress_DESC) {
     ...SkillFragment
   }
 }

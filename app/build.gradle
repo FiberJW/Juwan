@@ -48,4 +48,6 @@ dependencies {
 
     compile 'com.squareup.okhttp3:okhttp:3.7.0'
     compile 'com.squareup.okhttp3:logging-interceptor:3.7.0'
+
+    compile 'com.apollographql.apollo:apollo-android-support:0.3.0'
 }

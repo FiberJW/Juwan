@@ -44,6 +44,11 @@ public class SkillsAdapter extends RecyclerView.Adapter<SkillsAdapter.ViewHolder
         // populate fields
         SkillFragment skillFragment = skills.get(position);
 
+        holder.skillNameTextView.setText(skillFragment.name());
+        holder.progressBar.setProgress(skillFragment.progress());
+        holder.progressBar.setReachedBarColor(Color.parseColor(skillFragment.color()));
+        holder.progressBar.setProgressTextVisibility(NumberProgressBar.ProgressTextVisibility.Invisible);
+
         if (position == getItemCount() - 1) {
             RecyclerView.LayoutParams params = (RecyclerView.LayoutParams) holder.rootCardView.getLayoutParams();
             params.setMargins(
@@ -54,10 +59,6 @@ public class SkillsAdapter extends RecyclerView.Adapter<SkillsAdapter.ViewHolder
             );
             holder.rootCardView.setLayoutParams(params);
 
-            holder.skillNameTextView.setText(skillFragment.name());
-            holder.progressBar.setProgress(skillFragment.progress());
-            holder.progressBar.setReachedBarColor(Color.parseColor(skillFragment.color()));
-            holder.progressBar.setProgressTextColor(Color.parseColor(skillFragment.color()));
         }
     }
 
