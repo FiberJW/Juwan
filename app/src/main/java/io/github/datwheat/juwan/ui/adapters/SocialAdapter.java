@@ -49,7 +49,6 @@ public class SocialAdapter extends RecyclerView.Adapter<SocialAdapter.ViewHolder
     public void onBindViewHolder(final ViewHolder holder, int position) {
         final SocialOutletFragment socialOutletFragment = socialOutlets.get(position);
 
-        holder.socialOutletNameTextView.setText(socialOutletFragment.name());
 
         Picasso.with(context)
                 .load(socialOutletFragment.imageURL())
@@ -64,6 +63,7 @@ public class SocialAdapter extends RecyclerView.Adapter<SocialAdapter.ViewHolder
 
                         holder.rootCardView.setCardBackgroundColor(backgroundColor);
                         holder.socialOutletNameTextView.setTextColor(textColor);
+                        holder.socialOutletNameTextView.setText(socialOutletFragment.name());
                     }
 
                     @Override
