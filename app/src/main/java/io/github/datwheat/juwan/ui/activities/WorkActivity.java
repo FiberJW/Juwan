@@ -1,5 +1,6 @@
 package io.github.datwheat.juwan.ui.activities;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -61,6 +62,11 @@ public class WorkActivity extends AppCompatActivity {
         projectRecyclerViewAdapter = new ProjectsAdapter(projectData);
         projectRecyclerView.setAdapter(projectRecyclerViewAdapter);
 
+        final ProgressDialog progress = new ProgressDialog(this);
+        progress.setMessage("Loading...");
+        progress.setCancelable(false);
+        progress.show();
+
         application.apolloClient().newCall(new GetAllProjectsQuery()).cacheControl(CacheControl.NETWORK_FIRST).enqueue(new ApolloCall.Callback<GetAllProjectsQuery.Data>() {
             @Override
             public void onResponse(@Nonnull Response<GetAllProjectsQuery.Data> response) {
@@ -77,6 +83,12 @@ public class WorkActivity extends AppCompatActivity {
                         }
                     });
                 }
+                WorkActivity.this.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        progress.dismiss();
+                    }
+                });
             }
 
             @Override
@@ -84,6 +96,7 @@ public class WorkActivity extends AppCompatActivity {
                 WorkActivity.this.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
+                        progress.dismiss();
                         Toast.makeText(WorkActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });

@@ -1,5 +1,6 @@
 package io.github.datwheat.juwan.ui.activities;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.ActionBar;
@@ -62,6 +63,11 @@ public class SkillsActivity extends AppCompatActivity {
         skillsRecyclerView.setAdapter(skillsRecyclerViewAdapter);
         skillsRecyclerView.setMinimumWidth(300);
 
+        final ProgressDialog progress = new ProgressDialog(this);
+        progress.setMessage("Loading...");
+        progress.setCancelable(false);
+        progress.show();
+
         application.apolloClient().newCall(new GetAllSkillsQuery()).cacheControl(CacheControl.NETWORK_FIRST).enqueue(new ApolloCall.Callback<GetAllSkillsQuery.Data>() {
             @Override
             public void onResponse(@Nonnull Response<GetAllSkillsQuery.Data> response) {
@@ -78,6 +84,12 @@ public class SkillsActivity extends AppCompatActivity {
                         }
                     });
                 }
+                SkillsActivity.this.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        progress.dismiss();
+                    }
+                });
             }
 
             @Override
@@ -85,6 +97,7 @@ public class SkillsActivity extends AppCompatActivity {
                 SkillsActivity.this.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
+                        progress.dismiss();
                         Toast.makeText(SkillsActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });

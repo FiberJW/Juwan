@@ -1,5 +1,6 @@
 package io.github.datwheat.juwan.ui.activities;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -60,6 +61,11 @@ public class SocialActivity extends AppCompatActivity {
         socialRecyclerView.addItemDecoration(new SocialItemDecoration(DimensionUtils.pxToDp(this, 8)));
         socialRecyclerView.setAdapter(socialRecyclerViewAdapter);
 
+        final ProgressDialog progress = new ProgressDialog(this);
+        progress.setMessage("Loading...");
+        progress.setCancelable(false);
+        progress.show();
+
         application.apolloClient().newCall(new GetAllSocialOutletsQuery()).cacheControl(CacheControl.NETWORK_FIRST).enqueue(new ApolloCall.Callback<GetAllSocialOutletsQuery.Data>() {
             @Override
             public void onResponse(@Nonnull Response<GetAllSocialOutletsQuery.Data> response) {
@@ -76,6 +82,12 @@ public class SocialActivity extends AppCompatActivity {
                         }
                     });
                 }
+                SocialActivity.this.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        progress.dismiss();
+                    }
+                });
             }
 
             @Override
@@ -83,6 +95,7 @@ public class SocialActivity extends AppCompatActivity {
                 SocialActivity.this.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
+                        progress.dismiss();
                         Toast.makeText(SocialActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
