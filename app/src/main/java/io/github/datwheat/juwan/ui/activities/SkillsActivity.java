@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import com.apollographql.apollo.ApolloCall;
 import com.apollographql.apollo.api.Response;
+import com.apollographql.apollo.cache.normalized.CacheControl;
 import com.apollographql.apollo.exception.ApolloException;
 
 import java.util.ArrayList;
@@ -52,7 +53,7 @@ public class SkillsActivity extends AppCompatActivity {
         ab.setTitle(R.string.skills_activity_toolbar_title);
         ab.setDisplayHomeAsUpEnabled(true);
 
-        RecyclerView.LayoutManager recyclerViewLayoutManager = new LinearLayoutManager(this);
+        final RecyclerView.LayoutManager recyclerViewLayoutManager = new LinearLayoutManager(this);
         skillsRecyclerView.setLayoutManager(recyclerViewLayoutManager);
 
         final List<SkillFragment> skills = new ArrayList<>();
@@ -61,7 +62,7 @@ public class SkillsActivity extends AppCompatActivity {
         skillsRecyclerView.setAdapter(skillsRecyclerViewAdapter);
         skillsRecyclerView.setMinimumWidth(300);
 
-        application.apolloClient().newCall(new GetAllSkillsQuery()).enqueue(new ApolloCall.Callback<GetAllSkillsQuery.Data>() {
+        application.apolloClient().newCall(new GetAllSkillsQuery()).cacheControl(CacheControl.NETWORK_FIRST).enqueue(new ApolloCall.Callback<GetAllSkillsQuery.Data>() {
             @Override
             public void onResponse(@Nonnull Response<GetAllSkillsQuery.Data> response) {
                 for (final GetAllSkillsQuery.Data.Skill skill : response.data().skills()) {
@@ -69,6 +70,10 @@ public class SkillsActivity extends AppCompatActivity {
                         @Override
                         public void run() {
                             skills.add(skill.fragments().skillFragment());
+                            skillsRecyclerView.setAdapter(null);
+                            skillsRecyclerView.setLayoutManager(null);
+                            skillsRecyclerView.setAdapter(skillsRecyclerViewAdapter);
+                            skillsRecyclerView.setLayoutManager(recyclerViewLayoutManager);
                             skillsRecyclerViewAdapter.notifyDataSetChanged();
                         }
                     });

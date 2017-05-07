@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import com.apollographql.apollo.ApolloCall;
 import com.apollographql.apollo.api.Response;
+import com.apollographql.apollo.cache.normalized.CacheControl;
 import com.apollographql.apollo.exception.ApolloException;
 
 import java.util.ArrayList;
@@ -50,7 +51,7 @@ public class SocialActivity extends AppCompatActivity {
         ab.setTitle(R.string.social_activity_toolbar_title);
         ab.setDisplayHomeAsUpEnabled(true);
 
-        RecyclerView.LayoutManager recyclerViewLayoutManager = new GridLayoutManager(this, 2);
+        final RecyclerView.LayoutManager recyclerViewLayoutManager = new GridLayoutManager(this, 2);
         socialRecyclerView.setLayoutManager(recyclerViewLayoutManager);
 
         final List<SocialOutletFragment> socialOutlets = new ArrayList<>();
@@ -59,7 +60,7 @@ public class SocialActivity extends AppCompatActivity {
         socialRecyclerView.addItemDecoration(new SocialItemDecoration(DimensionUtils.pxToDp(this, 8)));
         socialRecyclerView.setAdapter(socialRecyclerViewAdapter);
 
-        application.apolloClient().newCall(new GetAllSocialOutletsQuery()).enqueue(new ApolloCall.Callback<GetAllSocialOutletsQuery.Data>() {
+        application.apolloClient().newCall(new GetAllSocialOutletsQuery()).cacheControl(CacheControl.NETWORK_FIRST).enqueue(new ApolloCall.Callback<GetAllSocialOutletsQuery.Data>() {
             @Override
             public void onResponse(@Nonnull Response<GetAllSocialOutletsQuery.Data> response) {
                 for (final GetAllSocialOutletsQuery.Data.SocialOutlet socialOutlet : response.data().socialOutlets()) {
@@ -67,6 +68,10 @@ public class SocialActivity extends AppCompatActivity {
                         @Override
                         public void run() {
                             socialOutlets.add(socialOutlet.fragments().socialOutletFragment());
+                            socialRecyclerView.setAdapter(null);
+                            socialRecyclerView.setLayoutManager(null);
+                            socialRecyclerView.setAdapter(socialRecyclerViewAdapter);
+                            socialRecyclerView.setLayoutManager(recyclerViewLayoutManager);
                             socialRecyclerViewAdapter.notifyDataSetChanged();
                         }
                     });

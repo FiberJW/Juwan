@@ -1,5 +1,5 @@
 query GetAllProjectsQuery{
-  projects: allProjects(orderBy: createdAt_ASC) {
+  projects: allProjects(orderBy: name_ASC) {
     ...ProjectFragment
   }
 }

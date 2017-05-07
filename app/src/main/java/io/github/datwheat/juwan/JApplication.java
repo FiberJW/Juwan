@@ -35,6 +35,7 @@ public class JApplication extends Application {
 
         ApolloSqlHelper apolloSqlHelper = ApolloSqlHelper.create(this, SQL_CACHE_NAME);
 
+
         NormalizedCacheFactory cacheFactory = new SqlNormalizedCacheFactory(apolloSqlHelper);
 
         CacheKeyResolver<Map<String, Object>> resolver = new CacheKeyResolver<Map<String, Object>>() {

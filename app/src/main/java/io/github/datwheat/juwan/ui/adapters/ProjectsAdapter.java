@@ -65,6 +65,15 @@ public class ProjectsAdapter extends RecyclerView.Adapter<ProjectsAdapter.ViewHo
                     DimensionUtils.pxToDp(context, 8)
             );
             holder.rootCardView.setLayoutParams(params);
+        } else {
+            RecyclerView.LayoutParams params = (RecyclerView.LayoutParams) holder.rootCardView.getLayoutParams();
+            params.setMargins(
+                    params.leftMargin,
+                    params.topMargin,
+                    params.rightMargin,
+                    params.bottomMargin
+            );
+            holder.rootCardView.setLayoutParams(params);
         }
 
         holder.rootCardView.setOnClickListener(new View.OnClickListener() {

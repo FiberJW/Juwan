@@ -58,7 +58,15 @@ public class SkillsAdapter extends RecyclerView.Adapter<SkillsAdapter.ViewHolder
                     DimensionUtils.pxToDp(context, 8)
             );
             holder.rootCardView.setLayoutParams(params);
-
+        } else {
+            RecyclerView.LayoutParams params = (RecyclerView.LayoutParams) holder.rootCardView.getLayoutParams();
+            params.setMargins(
+                    params.leftMargin,
+                    params.topMargin,
+                    params.rightMargin,
+                    params.bottomMargin
+            );
+            holder.rootCardView.setLayoutParams(params);
         }
     }
 

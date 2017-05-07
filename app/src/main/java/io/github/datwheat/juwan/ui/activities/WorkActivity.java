@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import com.apollographql.apollo.ApolloCall;
 import com.apollographql.apollo.api.Response;
+import com.apollographql.apollo.cache.normalized.CacheControl;
 import com.apollographql.apollo.exception.ApolloException;
 
 import java.util.ArrayList;
@@ -52,7 +53,7 @@ public class WorkActivity extends AppCompatActivity {
         ab.setTitle(R.string.work_activity_toolbar_title);
         ab.setDisplayHomeAsUpEnabled(true);
 
-        RecyclerView.LayoutManager recyclerViewLayoutManager = new LinearLayoutManager(this);
+        final RecyclerView.LayoutManager recyclerViewLayoutManager = new LinearLayoutManager(this);
         projectRecyclerView.setLayoutManager(recyclerViewLayoutManager);
 
         final List<ProjectFragment> projectData = new ArrayList<>();
@@ -60,7 +61,7 @@ public class WorkActivity extends AppCompatActivity {
         projectRecyclerViewAdapter = new ProjectsAdapter(projectData);
         projectRecyclerView.setAdapter(projectRecyclerViewAdapter);
 
-        application.apolloClient().newCall(new GetAllProjectsQuery()).enqueue(new ApolloCall.Callback<GetAllProjectsQuery.Data>() {
+        application.apolloClient().newCall(new GetAllProjectsQuery()).cacheControl(CacheControl.NETWORK_FIRST).enqueue(new ApolloCall.Callback<GetAllProjectsQuery.Data>() {
             @Override
             public void onResponse(@Nonnull Response<GetAllProjectsQuery.Data> response) {
                 for (final GetAllProjectsQuery.Data.Project project : response.data().projects()) {
@@ -68,6 +69,10 @@ public class WorkActivity extends AppCompatActivity {
                         @Override
                         public void run() {
                             projectData.add(project.fragments().projectFragment());
+                            projectRecyclerView.setAdapter(null);
+                            projectRecyclerView.setLayoutManager(null);
+                            projectRecyclerView.setAdapter(projectRecyclerViewAdapter);
+                            projectRecyclerView.setLayoutManager(recyclerViewLayoutManager);
                             projectRecyclerViewAdapter.notifyDataSetChanged();
                         }
                     });
